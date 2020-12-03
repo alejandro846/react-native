@@ -1,6 +1,6 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import {ListaPokemon} from '../listaPokemon.js';
+
 
 export class InfoScreen extends Component {
 
