@@ -11,13 +11,15 @@ console.log(HomeScreen, InfoScreen);
 const Drawer = createDrawerNavigator();
 
 export class DrawerCustomNavigator extends Component {
-
+    handlerLogout(){
+        this.props.onLogout();
+        }
     render(){
         return(
             <Drawer.Navigator 
                 initialRouteName="Home"
                 headerMode={'none'}
-                drawerContent={props => <DrawerContentScreen {...props}/>}
+                drawerContent={props => <DrawerContentScreen {...props} onLogout={()=> this.handlerLogout()}/>}
             >
                 <Drawer.Screen name="Home" component={HomeScreen} />
                 <Drawer.Screen name="Info" component={InfoScreen} />
