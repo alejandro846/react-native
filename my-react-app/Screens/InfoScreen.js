@@ -1,8 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {Component, useEffect, useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import Unorderedlist from 'react-native-unordered-list';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {ListaPokemon} from '../listaPokemon.js';
 
 export class InfoScreen extends Component {
 
@@ -12,77 +10,58 @@ constructor(props){
     this.state= {
         loading: false,
         pokemon: [],
-        URL:'https://jsonplaceholder.typicode.com/todos'
-
+        url:'https://pokeapi.co/api/v2/pokemon/'
     }
-    
     }
-    
-
 
 componentDidMount(){
 this.getPokemon();
-
 };
 
 getPokemon = () => {
 
     this.setState({ loading:true })
-
-    fetch(this.state.URL)
+    
+    fetch(this.state.url)
     .then(res => res.json())
     .then( res => {
-
         this.setState({
 
             pokemon: res.results,
-            URL: res.next,
+            url: res.next,
             loading: false
 
         })
-
     });
 
 
 };
-
-
+   
 render() {
     if(this.state.loading){
-
-        return(
+       return(
             <View styles={styles.container}>
        
 <Text >Descargando pokemon </Text>
+
          </View>
-);
+);}
 
-}
+
+
 return(
-    <View styles={styles.container}>
-<Text >Listado de pokemon</Text>
- </View>
-);
-
-    return(
-        <View styles={{flex: 1, paddingtop:50, paddingLeft:5}}>
+    <View styles={{flex: 1, paddingtop:50, paddingLeft:5}}>
+        <Text>listaPokemon</Text>
             <FlatList
-            data={this.state.pokemon}
+           data={this.state.pokemon}
             renderItem={
-                ({item}) => <Text> { item.name} </Text>
+                ({item}) => <Text> {item.name} </Text>
             }
             keyExtractor={(item, index)=> index.toString()}
             />
         </View>
-        );
-
+);
 }
-
-
-
-
-
-
 }
 const styles = StyleSheet.create({
     container: {

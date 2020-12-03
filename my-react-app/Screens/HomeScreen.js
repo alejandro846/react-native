@@ -7,7 +7,7 @@ export class HomeScreen extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <Text>This is the home screen</Text>
+                <Text>Esta es mi app de pokemon</Text>
                 <StatusBar style="auto" />
             </View>
         );
